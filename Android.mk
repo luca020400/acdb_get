@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2016 The CyanogenMod Project
+# Copyright (C) 2017 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -23,12 +23,6 @@ LOCAL_SRC_FILES := acdb_get.c
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE := acdb_get
 LOCAL_MODULE_CLASS := EXECUTABLES
-
-ifneq ($(TARGET_SUPPORTS_WEARABLES),true)
-ifeq ($(strip $(AUDIO_FEATURE_ENABLED_RECORD_PLAY_CONCURRENCY)),true)
-    LOCAL_CFLAGS += -DRECORD_PLAY_CONCURRENCY
-endif
-endif
 
 LOCAL_32_BIT_ONLY := true
 
