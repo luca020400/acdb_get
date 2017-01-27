@@ -3,12 +3,12 @@
 
 #include "acdb_data.h"
 
-typedef int snd_device_t;
+typedef int (*platform_get_snd_device_acdb_id_t)(int);
 
 int main() {
     void *handle;
     const char *error;
-    snd_device_t (*snd_device)(snd_device_t);
+    platform_get_snd_device_acdb_id_t platform_get_snd_device_acdb_id;
 
     handle = dlopen("/system/lib/hw/audio.primary.msm8952.so", RTLD_LAZY);
     if (!handle) {
@@ -18,7 +18,7 @@ int main() {
 
     dlerror(); /* Clear any existing error */
 
-    snd_device = (snd_device_t (*)(snd_device_t)) dlsym(handle, "platform_get_snd_device_acdb_id");
+    platform_get_snd_device_acdb_id = (platform_get_snd_device_acdb_id_t)dlsym(handle, "platform_get_snd_device_acdb_id");
 
     error = dlerror();
     if (error != NULL)  {
@@ -27,7 +27,7 @@ int main() {
     }
 
     for (int dev = 1; dev < SND_DEVICE_MAX; dev++)
-        printf("%s: %i\n", device_table[dev], (*snd_device)(dev));
+        printf("%s: %i\n", device_table[dev], platform_get_snd_device_acdb_id(dev));
 
     dlclose(handle);
     exit(EXIT_SUCCESS);
