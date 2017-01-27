@@ -10,7 +10,7 @@ int main() {
     const char *error;
     platform_get_snd_device_acdb_id_t platform_get_snd_device_acdb_id;
 
-    handle = dlopen("/system/lib/hw/audio.primary.msm8952.so", RTLD_LAZY);
+    handle = dlopen(LIB_AUDIO_HAL, RTLD_LAZY);
     if (!handle) {
         fprintf(stderr, "%s\n", dlerror());
         exit(EXIT_FAILURE);
