@@ -26,8 +26,7 @@ int main() {
         exit(EXIT_FAILURE);
     }
 
-    int dev;
-    for (dev = 0; dev < SND_DEVICE_MAX; dev++)
+    for (int dev = 1; dev < SND_DEVICE_MAX; dev++)
         printf("%s: %i\n", device_table[dev], (*snd_device)(dev));
 
     dlclose(handle);

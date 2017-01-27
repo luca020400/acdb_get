@@ -4,7 +4,6 @@ devices=$(strings $1 |  egrep "SND_DEVICE_OUT|SND_DEVICE_IN")
 
 echo -ne "" > acdb_data.h
 echo "enum {" >> acdb_data.h
-echo "    SND_DEVICE_NONE = 0," >> acdb_data.h
 
 for device in $devices; do
     echo "    $device," >> acdb_data.h
