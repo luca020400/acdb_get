@@ -5,6 +5,7 @@ devices=$(strings $1 |  egrep "SND_DEVICE_OUT|SND_DEVICE_IN")
 echo -ne "" > acdb_data.h
 
 echo "#define LIB_AUDIO_HAL \"/system/lib/hw/$(basename $1)\"" >> acdb_data.h
+echo >> acdb_data.h
 
 echo "enum {" >> acdb_data.h
 
