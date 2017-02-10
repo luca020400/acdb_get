@@ -8,6 +8,7 @@ echo "#define LIB_AUDIO_HAL \"$(basename $1)\"" >> acdb_data.h
 echo >> acdb_data.h
 
 echo "enum {" >> acdb_data.h
+echo "    SND_DEVICE_NONE = 0," >> acdb_data.h
 
 for device in $devices; do
     echo "    $device," >> acdb_data.h
