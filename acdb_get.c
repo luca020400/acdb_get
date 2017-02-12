@@ -23,7 +23,8 @@ int main() {
     }
 
     printf("    <acdb_ids>\n");
-    for (int dev = 1; dev < SND_DEVICE_MAX; dev++)
+    int dev;
+    for (dev = 1; dev < SND_DEVICE_MAX; dev++)
         printf("        <device name=\"%s\" acdb_id=\"%i\"/>\n", device_table[dev], platform_get_snd_device_acdb_id(dev));
     printf("    </acdb_ids>\n");
 
