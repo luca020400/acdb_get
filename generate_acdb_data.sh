@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ ! -f $1 ]; then
+    echo "You need to specify the target lib"
+    exit 1
+fi
+
 devices=`strings $1 | egrep "^(SND_DEVICE_OUT|SND_DEVICE_IN)"`
 
 echo -ne "" > acdb_data.h
