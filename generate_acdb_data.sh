@@ -5,12 +5,9 @@ if [ ! -f $1 ]; then
     exit 1
 fi
 
-devices=`strings $1 | egrep "^(SND_DEVICE_OUT|SND_DEVICE_IN)"`
+devices=`strings $1 | egrep "^(SND_DEVICE_OUT|SND_DEVICE_IN)" | sort | uniq`
 
 echo -ne "" > acdb_data.h
-
-echo "#define LIB_AUDIO_HAL \"$(basename $1)\"" >> acdb_data.h
-echo >> acdb_data.h
 
 echo "enum {" >> acdb_data.h
 echo "    SND_DEVICE_NONE = 0," >> acdb_data.h
