@@ -10,14 +10,13 @@ int main() {
     platform_get_snd_device_acdb_id_t platform_get_snd_device_acdb_id;
 
     handle = dlopen(LIB_AUDIO_HAL, RTLD_LAZY);
-    if (!handle) {
+    if (handle == NULL) {
         fprintf(stderr, "%s\n", dlerror());
         return 1;
     }
 
     platform_get_snd_device_acdb_id = (platform_get_snd_device_acdb_id_t) dlsym(handle, "platform_get_snd_device_acdb_id");
-
-    if (!platform_get_snd_device_acdb_id)  {
+    if (platform_get_snd_device_acdb_id == NULL)  {
         fprintf(stderr, "%s\n", dlerror());
         return 1;
     }
